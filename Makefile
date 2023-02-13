@@ -8,5 +8,12 @@ run:
 push:
 	docker push radius314/dg-test-nodejs-postgres
 
-deploy:
-	helm upgrade --install test ./chart
+install:
+	helm upgrade --install test ./chart --namespace test --create-namespace
+
+uninstall:
+	helm uninstall test
+
+postgres:
+	docker run -i -p 5432:5432 -e POSTGRES_USER=test -e POSTGRES_PASSWORD=test -e POSTGRES_DATABASE=test postgres
+
