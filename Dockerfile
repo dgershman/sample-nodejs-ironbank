@@ -1,4 +1,4 @@
-FROM registry1.dso.mil/ironbank/opensource/nodejs/nodejs16:16.17.1 as build
+FROM node:16 as build
 
 USER root
 
@@ -9,7 +9,7 @@ ENV NODE_ENV production
 COPY . /opt
 RUN npm install
 
-FROM registry1.dso.mil/ironbank/opensource/nodejs/nodejs16:16.17.1
+FROM node:16
 
 USER node
 
